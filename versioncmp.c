@@ -17,7 +17,6 @@ int readline(char* filename, char* buffer, int size) {
               c = fgetc(f);
           }
           if (c != EOF) {
-              buffer[pos++] = (char)c;
               while(c != '\n' && c != EOF) {
                   buffer[pos++] = c;
                   c = fgetc(f);
@@ -67,8 +66,8 @@ int main(int argc, char * argv[], char * envp[]) {
         strncpy(buf2, argv[2], BUF_SIZE-1);
     }
 
-    //fprintf(stderr, "%s\n", buf1);
-    //fprintf(stderr, "%s\n", buf2);
+    fprintf(stderr, "%s\n", buf1);
+    fprintf(stderr, "%s\n", buf2);
 
     s1_len = str_split(buf1, s1, S_LEN);
     s2_len = str_split(buf2, s2, S_LEN);
