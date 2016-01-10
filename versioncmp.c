@@ -79,6 +79,13 @@ int main(int argc, char * argv[], char * envp[]) {
 
     rlt = 0;
     for(i = 0; i < s_max; i++) {
+        if(!s1[i]) {
+            s1[i] = "0";
+        }
+        if(!s2[i]) {
+            s2[i] = "0";
+        }
+
         n1 = strtol(s1[i], &end, 10);
         if(*end) {
             //parse error
