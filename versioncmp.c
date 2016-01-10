@@ -66,8 +66,8 @@ int main(int argc, char * argv[], char * envp[]) {
         strncpy(buf2, argv[2], BUF_SIZE-1);
     }
 
-    fprintf(stderr, "%s\n", buf1);
-    fprintf(stderr, "%s\n", buf2);
+    //fprintf(stderr, "%s\n", buf1);
+    //fprintf(stderr, "%s\n", buf2);
 
     s1_len = str_split(buf1, s1, S_LEN);
     s2_len = str_split(buf2, s2, S_LEN);
@@ -87,15 +87,25 @@ int main(int argc, char * argv[], char * envp[]) {
 
         n1 = strtol(s1[i], &end, 10);
         if(*end) {
-            //parse error
+            //parse error, but not break hear
             rlt = 1;
-            break;
         }
+
         n2 = strtol(s2[i], &end, 10);
         if(*end) {
-            rlt = 0;
+            if (1 == rlt) {
+                //both error
+                rlt = 0;
+                break;
+            }
+            rlt = -1;
             break;
         }
+
+        if(1 == rlt) {
+            break;
+        }
+
         if (n1 == n2) {
             continue;
         } else if(n1 < n2) {
